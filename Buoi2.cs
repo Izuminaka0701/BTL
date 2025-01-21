@@ -113,7 +113,7 @@ public class Program
         foreach(T element in list)
             Console.Write(element + ", ");*/
     }
-    static List<T> GetPythagoreanTrimplets<T>(List<T> list){
+    static List<T> GetPythagoreanTrimplets<T>(List<T> list) {
         for (int i = 0; i < list.Count; ++i)
             for (int j = i + 1; j < list.Count; ++j)
                 for (int k = j + 1; k < list.Count; ++k)
@@ -121,10 +121,19 @@ public class Program
                         return new List<T> { list[i], list[j], list[k] };
         return null;
     }
-    static int GetIntSquaredNumber<T>(List<T> list){
-
-        return 0;
+    static List<T> GetIntSquaredNumber<T>(List<T> list) {
+        List<T> newslist = new List<T>();
+        foreach (T i in list)
+        {
+            double concect = Convert.ToDouble(i);
+            if (concect >= 0)
+            {
+                double sqrt = Math.Sqrt(concect);
+                if (sqrt == (int)sqrt)
+                    newslist.Add(i);
+            }
+        }
+        Console.WriteLine(string.Join(", ", newslist));
+        return newslist;
     }
-
-  
 }
