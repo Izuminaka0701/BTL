@@ -137,8 +137,53 @@ public class MyQueue
         return sum;
     }
     //Bổ sung hàm swap để hoán đổi 2 phần tử trong queue
+    public void Swap(int i, int j)
+    {
+        List<object> list = new List<object>();
+        while (!this.IsEmpty())
+        {
+            list.Add(this.Dequeue().data);
+        }
+
+        object temp = list[i];
+        list[i] = list[j];
+        list[j] = temp;
+
+        foreach (var item in list)
+        {
+            this.Enqueue(item);
+        }
+    }
     //Bổ sung hàm sắp xếp lại queue theo thứ tự tăng dần: return
+    public void SortQueue()
+    {
+        List<int> list = new List<int>();
+        while (!this.IsEmpty())
+        {
+            list.Add((int)this.Dequeue().data);
+        }
+
+        list.Sort();
+
+        foreach (var item in list)
+        {
+            this.Enqueue(item);
+        }
+    }
     //Bổ sung hàm đảo ngược queue: return
+     public void ReverseQueue()
+    {
+        Stack<object> stack = new Stack<object>();
+        while (!this.IsEmpty())
+        {
+            stack.Push(this.Dequeue().data);
+        }
+
+        while (stack.Count > 0)
+        {
+            this.Enqueue(stack.Pop());
+        }
+    }
 }
 
 public class Program
