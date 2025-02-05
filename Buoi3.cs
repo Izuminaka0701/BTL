@@ -58,8 +58,34 @@ public class MyStack
         }
     }
     //Bổ sung hàm sắp xếp lại stack theo thứ tự tăng dần: return
-    
+    public void SortStack()
+    {
+    MyStack list = new MyStack();
+    while (!this.IsEmpty())
+    {
+        int numc = (int)this.Pop().data;
+        while (!list.IsEmpty() && (int)list.Peek().data > numc)
+        {
+            this.Push(list.Pop().data);
+        }
+        list.Push(numc);
+    }
+    while (!list.IsEmpty())
+    {
+        this.Push(list.Pop().data);
+    }
     //Bổ sung hàm đảo ngược stack: return
+     public void ReverseStack()
+     {
+     MyStack list = new MyStack();
+
+     while (!this.IsEmpty())
+     {
+         list.Push(this.Pop().data);
+     }
+
+     this.top = list.top;
+     }
 }
 
 public class Node2
