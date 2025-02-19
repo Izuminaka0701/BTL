@@ -16,6 +16,14 @@ public class Program
     }
 
     //Bài tập 1: Cài đặt SenSearch bằng đệ quy
+     static int SensearchRecursion(int[] arr, int value, int from)
+     {
+         if (from >= arr.Length) 
+             return -1;
+         if (arr[from] == value) 
+             return from;
+         return SensearchRecursion(arr, value, from + 1);
+     }
     static int SenSearch(int[] arr, int value){
         int x = arr[arr.Length-1];
         arr[arr.Length-1] = value; //Thêm phần tử cần tìm vào cuối mang - sentinel
@@ -30,6 +38,14 @@ public class Program
     }
 
     //Bài tập 2: Cài đặt BinSearch bằng đệ quy
+     static int BinsearchRecursion(int[] arr, int L, int R, int value)
+     {
+         if (L > R) return -1;
+         int M = (L + R) / 2;
+         if (arr[M] == value) return M;
+         if (arr[M] >  value) return BinsearchRecursion(arr, L, M - 1, value);
+         return BinsearchRecursion(arr, M + 1, R, value);
+     }
     static int BinSearch(int[] sarr, int value){
         int L = 0, R = sarr.Length-1;
         while(L<=R){
